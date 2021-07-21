@@ -3,6 +3,8 @@ from django.urls import path, include
 from baseApp import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.static import serve
+from django.conf.urls import url
 
 
 urlpatterns = [
@@ -29,6 +31,10 @@ urlpatterns = [
 	path('newmakup/',views.new_makup,name='newmakup'),
 	path('packages/',views.bpackage,name='packages'),
 	path('weddingpackages/',views.wpackage,name='weddingpackages'),
+    url(r'^media/(?P<path>.*)$', serve,
+        {'document_root':       settings.MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)$', serve,
+        {'document_root': settings.STATIC_ROOT}),
 
 
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
