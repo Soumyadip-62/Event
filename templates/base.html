@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static%}
+{% csrf_token %}
+
+<head>
+  <!-- Theme Made By www.w3schools.com -->
+  <title>Golden Days</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,800&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font: 400 15px Lato, sans-serif;
+      line-height: 1.8;
+      color: #818181;
+      font-family: serif;
+    }
+
+    h2 {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #303030;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      color: #303030;
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+
+    .jumbotron {
+      background-color: #000000;
+      background-image: linear-gradient(315deg, #000000 0%, #b82e1f 74%);
+      color: #fff;
+      padding: 100px 50px;
+      font-family: san-serif;
+      box-shadow: 0px 3px 20px #070707;
+    }
+
+    .container-fluid {
+      padding: 50px 40px;
+    }
+
+    .bg-grey {
+      background-color: #f6f6f6;
+    }
+
+    /* .bg-bg {
+		background: url({%static 'mobile_contact_us.jpg' %}) no-repeat;
+		position: relative;
+	} */
+    .logo-small {
+      color: #f4511e;
+      font-size: 50px;
+    }
+
+    .logo {
+      color: #f4511e;
+      font-size: 200px;
+    }
+
+    .thumbnail {
+      padding: 0 0 15px 0;
+      border: none;
+      border-radius: 0;
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 10px;
+    }
+
+    .carousel-control.right,
+    .carousel-control.left {
+      background-image: none;
+      color: #f4511e;
+    }
+
+    .carousel-indicators li {
+      border-color: #f4511e;
+    }
+
+    .carousel-indicators li.active {
+      background-color: #f4511e;
+    }
+
+    .item h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      font-weight: 400;
+      font-style: italic;
+      margin: 70px 0;
+    }
+
+    .item span {
+      font-style: normal;
+    }
+
+    .panel {
+      border: 1px solid #f4511e;
+      border-radius: 0 !important;
+      transition: box-shadow 0.5s;
+    }
+
+    .panel:hover {
+      box-shadow: 5px 0px 40px rgba(0, 0, 0, .2);
+    }
+
+    .panel-footer .btn:hover {
+      border: 1px solid #f4511e;
+      background-color: #fff !important;
+      color: #f4511e;
+    }
+
+    .panel-heading {
+      color: #fff !important;
+      background-color: #f4511e !important;
+      padding: 25px;
+      border-bottom: 1px solid transparent;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+
+    .panel-footer {
+      background-color: white !important;
+    }
+
+    .panel-footer h3 {
+      font-size: 32px;
+    }
+
+    .panel-footer h4 {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .panel-footer .btn {
+      margin: 15px 0;
+      background-color: #000000;
+      color: #fff;
+    }
+
+    .navbar {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+      background-color: #2d2d30;
+      border: 0;
+      font-size: 11px !important;
+      letter-spacing: 3px;
+      opacity: 0.9;
+    }
+
+    .navbar.light .navbar.brand {
+      color: #fff;
+      font-size: 25px;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .navbar li a,
+    .navbar .navbar-brand {
+      padding-left: 10px;
+      padding-right: 10px;
+      color: #fff !important;
+    }
+
+    .navbar-nav li a:hover,
+    .navbar-nav li.active a {
+      color: #f4c91e !important;
+      background-color: #000 !important;
+    }
+
+    .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+    }
+
+    /* Hide Dropdowns by Default */
+    nav ul ul {
+
+      position: absolute;
+      top: 60px;
+      /* the height of the main nav */
+    }
+
+    /* Display Dropdowns on Hover */
+    nav ul li:hover>ul {
+      display: inherit;
+      background-color: #000000;
+      background-image: linear-gradient(315deg, #cc8914 0%, #000000 74%);
+      ;
+    }
+
+
+    /* Fisrt Tier Dropdown */
+    nav ul ul li {
+      width: 170px;
+      float: none;
+      display: list-item;
+      position: relative;
+    }
+
+    /* Second, Third and more Tiers	*/
+    nav ul ul ul li {
+      position: relative;
+      top: -60px;
+      left: 170px;
+    }
+
+
+    /* Change this in order to change the Dropdown symbol */
+    li>a:after {
+      content: ' +';
+    }
+
+    li>a:only-child:after {
+      content: '';
+    }
+
+    footer .glyphicon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #f4511e;
+    }
+
+    .slideanim {
+      visibility: hidden;
+    }
+
+    .slide {
+      animation-name: slide;
+      -webkit-animation-name: slide;
+      animation-duration: 1s;
+      -webkit-animation-duration: 1s;
+      visibility: visible;
+    }
+
+    @keyframes slide {
+      0% {
+        opacity: 0;
+        transform: translateY(70%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0%);
+      }
+    }
+
+    @-webkit-keyframes slide {
+      0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+      }
+
+      100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+      }
+
+      .banner-text p {
+        display: none;
+      }
+
+      .modal-dialog {
+        max-width: 600px;
+        /* New width for default modal */
+      }
+
+      .btn-lg {
+        width: 100%;
+        margin-bottom: 35px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .logo {
+        font-size: 150px;
+      }
+    }
+
+    .thumbnail {
+      padding: 15px;
+      border: none;
+      border-radius: 2px;
+      background: transparent;
+    }
+
+    .thumbnail p {
+      margin-top: 15px;
+      color: #555;
+    }
+
+    .thumbnail img {
+      border-radius: 10px;
+      transition: transform .35s;
+      /* Animation */
+    }
+
+    .thumbnail:hover img {
+
+      transform: scale(1.1);
+      /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+
+    .wrap-banner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 75vh;
+      background:url({%static 'mobile_contact_us.jpg' %});
+      background-size: cover;
+      background-position: relative;
+    }
+
+    .h-facebook:hover {
+      color: #4267B2;
+    }
+
+    .h-twitter:hover {
+      color: #00acee;
+    }
+
+    .h-instagram:hover {
+      color: #8a3ab9;
+    }
+  </style>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand " href="#myPage"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+            fill="currentColor" class="bi bi-slack" viewBox="0 0 16 16">
+            <path
+              d="M3.362 10.11c0 .926-.756 1.681-1.681 1.681S0 11.036 0 10.111C0 9.186.756 8.43 1.68 8.43h1.682v1.68zm.846 0c0-.924.756-1.68 1.681-1.68s1.681.756 1.681 1.68v4.21c0 .924-.756 1.68-1.68 1.68a1.685 1.685 0 0 1-1.682-1.68v-4.21zM5.89 3.362c-.926 0-1.682-.756-1.682-1.681S4.964 0 5.89 0s1.68.756 1.68 1.68v1.682H5.89zm0 .846c.924 0 1.68.756 1.68 1.681S6.814 7.57 5.89 7.57H1.68C.757 7.57 0 6.814 0 5.89c0-.926.756-1.682 1.68-1.682h4.21zm6.749 1.682c0-.926.755-1.682 1.68-1.682.925 0 1.681.756 1.681 1.681s-.756 1.681-1.68 1.681h-1.681V5.89zm-.848 0c0 .924-.755 1.68-1.68 1.68A1.685 1.685 0 0 1 8.43 5.89V1.68C8.43.757 9.186 0 10.11 0c.926 0 1.681.756 1.681 1.68v4.21zm-1.681 6.748c.926 0 1.682.756 1.682 1.681S11.036 16 10.11 16s-1.681-.756-1.681-1.68v-1.682h1.68zm0-.847c-.924 0-1.68-.755-1.68-1.68 0-.925.756-1.681 1.68-1.681h4.21c.924 0 1.68.756 1.68 1.68 0 .926-.756 1.681-1.68 1.681h-4.21z" />
+          </svg> GOLDEN DAYS</a>
+
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="{% url 'album' %}" class="nav-link">
+              ALBUM
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              EVENTS
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'Wedding' %}" target="blank">Wedding</a></li>
+              <li><a class="dropdown-item" href="{% url 'Birthday' %}" target="blank">Birthday</a></li>
+              <li><a class="dropdown-item" href="{% url 'anniversary' %}" target="blank">Anniversary</a></li>
+              <li><a class="dropdown-item" href="{% url 'packages' %}" target="blank">Packages</a></li>
+
+            </ul>
+          </li>
+
+          <li> <a href="#aboutus">ABOUT </a></li>
+          <li><a href="#contact">CONTACT</a></li>
+          {% if user.is_superuser %}
+          <li>
+            <a href="{% url 'admindashboard' %}" class="nav-link">
+              ADMIN DASHBOARD
+            </a>
+          </li>
+          {% elif not user.is_anonymous %}
+          <li>
+            <a href="{% url 'viewrequest' %}" class="nav-link">
+              VIEW REQUEST STATUS
+            </a>
+          </li>
+          {% endif %}
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                <path
+                  d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
+              </svg>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li class="nav-item d-flex">
+                {% if user.is_authenticated %}
+              <li class="d-inline"><b style="color: #f6f6f6;"> &nbsp&nbspWelcome, <i>&nbsp&nbsp{{user.username}}</i>
+                </b></li>
+              <a class="nav-link" href="accounts/logout">Logout</a>
+              {% else %}
+              <a class="nav-link" href="accounts/login">Login</a>
+              <a class="nav-link" href="accounts/register">Register</a>
+              {% endif %}
+          </li>
+        </ul>
+        </li>
+
+
+
+      </div>
+    </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+
+  <div class="jumbotron text-center wave" style="background: url({% static 'gold1.jpg' %})">
+    <h1><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-slack"
+        viewBox="0 0 16 16">
+        <path
+          d="M3.362 10.11c0 .926-.756 1.681-1.681 1.681S0 11.036 0 10.111C0 9.186.756 8.43 1.68 8.43h1.682v1.68zm.846 0c0-.924.756-1.68 1.681-1.68s1.681.756 1.681 1.68v4.21c0 .924-.756 1.68-1.68 1.68a1.685 1.685 0 0 1-1.682-1.68v-4.21zM5.89 3.362c-.926 0-1.682-.756-1.682-1.681S4.964 0 5.89 0s1.68.756 1.68 1.68v1.682H5.89zm0 .846c.924 0 1.68.756 1.68 1.681S6.814 7.57 5.89 7.57H1.68C.757 7.57 0 6.814 0 5.89c0-.926.756-1.682 1.68-1.682h4.21zm6.749 1.682c0-.926.755-1.682 1.68-1.682.925 0 1.681.756 1.681 1.681s-.756 1.681-1.68 1.681h-1.681V5.89zm-.848 0c0 .924-.755 1.68-1.68 1.68A1.685 1.685 0 0 1 8.43 5.89V1.68C8.43.757 9.186 0 10.11 0c.926 0 1.681.756 1.681 1.68v4.21zm-1.681 6.748c.926 0 1.682.756 1.682 1.681S11.036 16 10.11 16s-1.681-.756-1.681-1.68v-1.682h1.68zm0-.847c-.924 0-1.68-.755-1.68-1.68 0-.925.756-1.681 1.68-1.681h4.21c.924 0 1.68.756 1.68 1.68 0 .926-.756 1.681-1.68 1.681h-4.21z" />
+      </svg> GOLDEN DAYS</h1>
+    <p><b><i>"One &nbsp; GOLDEN &nbsp; DAY &nbsp; redeem &nbsp; a &nbsp; weary &nbsp; year..."</i></b></p>
+  </div>
+
+  </div>
+  </header>
+
+  <!--Alertsection-->
+  {% for message in messages %}
+    <div class="alert alert-success alert-dismissable"  role="alert">
+                <button class="close" data-dismiss="alert">
+                    <large><sup><h2>x</h2><sup></large>
+                </button>
+                 <strong>Message:  {{ message }} </strong>
+    </div>
+  {% endfor %}
+  <!-- Container (Event Section) -->
+
+
+  <div id="event" class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="{% static 'right-age-for-marriage-in-india.jpg' %}" alt="Wedding" style="border-radius:15px;"
+            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="480"
+            height="270">
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <h2 class="featurette-heading" style="text-align: center;">&nbsp<a href="{% url 'Wedding' %}"
+            style=" color:black;"> Wedding</a><span class="text-muted">,&nbsp The best is yet to come.</span></h2>
+        <h3 style="text-align: center;"><i>&nbsp "Only love, respect and compassion for each other can keep a relation
+            alive. If a marriage relation
+            continues without these three elements, it becomes a lifetime burden and a relation of mutual benefits."</i>
+        </h3><br>
+      </div>
+    </div>
+  </div>
+  <div id="about" class="container-fluid bg-grey">
+    <div class="row">
+      <div class="col-sm-8">
+        <h2 class="featurette-heading"><a href="{% url 'Birthday' %}" style=" color:black;">Birthday</a></h2>
+        <h3><i>"Being born into this wonderful world is the most blissful feeling for a human being. The person gets to
+            enjoy so many amazing relationships which make his life worth living. The special day of birthday holds
+            immense significance in life and people loves to celebrate it in the company of their loved ones. The day is
+            not just the most awaited occasion for the birthday person, but also for the dear ones who have planned big
+            surprises."</i></h3><br>
+      </div>
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <img src="{% static 'pexels-marina-utrabo-1729808.jpg' %}" alt="Birthday" style="border-radius:40px;"
+            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="580"
+            height="270">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="event" class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="{% static 'anne.jpg' %}" alt="Wedding" style="border-radius:15px;"
+            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="480"
+            height="270">
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <h2 class="featurette-heading" style="text-align: center;">&nbsp<a href="{% url 'anniversary' %}" style="
+            color:black;"> Aniversary</a></h2>
+        <h3 style="text-align: center;"><i>&nbsp "Those monumental anniversary celebrations aren't what ultimately
+            determine the actual direction of our
+            marriage. Rather, it's the here and now. It's those daily decisions we make individually and together that
+            influence how our relationship actually fares in the long run."</i>
+        </h3><br>
+      </div>
+    </div>
+  </div>
+
+  <!-- Container (About Section) -->
+  <div id="aboutus" class="container-fluid text-center">
+    <h2>ABOUT US</h2>
+    <h4 style="font-size:25px;">Golden Days is a full service event management firm based in Hooghly, West Bengal that
+      was created by pairing
+      together our passion for business and events. We bring a fresh, unique approach to the event management
+      industry.Our team understands that a properly executed event can be leveraged to support an organization’s
+      strategic vision, incorporated into a company’s marketing plan,or used to build networks and client loyalty.</h4>
+    <br>
+    <div class="row slideanim">
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-off logo-small"></span>
+        <h4>POWER</h4>
+
+      </div>
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-heart logo-small"></span>
+        <h4>LOVE</h4>
+
+      </div>
+
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-wrench logo-small"></span>
+        <h4 style="color:#303030;">HARD WORK</h4>
+      </div>
+    </div>
+
+    <div class="index-section-wrapper page-content">
+      <div class="content-inner has-content" data-content-field="main-content">
+        <div class="sqs-layout sqs-grid-12 columns-12" data-type="page" data-updated-on="1595278344013"
+          id="page-5b5121088a922d1f4617b84c">
+          <div class="row sqs-row">
+            <div class="col sqs-col-12 span-12">
+              <div class="row sqs-row">
+                <div class="col sqs-col-2 span-2">
+                  <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1" data-block-type="21"
+                    id="block-yui_3_17_2_1_1410291813287_9633">
+                    <div class="sqs-block-content">&nbsp;</div>
+                  </div>
+                </div>
+                <div class="col sqs-col-8 span-8">
+                  <div class="sqs-block html-block sqs-block-html" data-block-type="2"
+                    id="block-yui_3_17_2_1_1410291813287_10007">
+                    <div class="sqs-block-content">
+                      <p style="text-align:center;font-family: sans-serif; font-size:18px;">Golden Days approaches every
+                        project
+                        with meticulous attention to detail and obsessive precision. Regardless of size and scope, we
+                        treat your event like a business with clear strategic goals, defined milestones, and a
+                        comprehensive plan to ensure that your event is delivered on time and on budget. At Golden Days,
+                        we put your organization first. We learn about your business, we focus on your challenges, and
+                        we plan events to support your goals.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col sqs-col-2 span-2">
+                  <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1" data-block-type="21"
+                    id="block-yui_3_17_2_1_1410291813287_10874">
+                    <div class="sqs-block-content">&nbsp;</div>
+                  </div>
+                </div>
+              </div>
+              <div class="sqs-block image-block sqs-block-image" data-block-type="5"
+                id="block-yui_3_17_2_1_1541172800617_7738">
+                <div class="sqs-block-content">
+                </div>
+              </div>
+
+
+
+              <!-- Container (Contact Section) -->
+              <section class="wrap-banner">
+
+                <div id="contact" class="container-fluid bg-bg">
+                  <form class="" method="post" onsubmit="Contact()">
+
+                    <h2 class="text-center">CONTACT US</h2>
+                    <div class="row">
+                      <div class="col-sm-5">
+
+                      </div>
+                      <div class="col-sm-7 slideanim">
+                        <div class="row">
+                          <div class="col-sm-10 form-group">
+                            <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                          </div>
+                          <div class="col-sm-10 form-group">
+                            <input class="form-control" id="email" name="email" placeholder="Email" type="email"
+                              required>
+                          </div>
+                        </div>
+                        <textarea class="form-control" id="feedbacks" name="feedbacks" placeholder="Feedback" rows="5"
+                          columns="10"></textarea><br>
+                        <div class="row">
+                          <div class="col-sm-12 form-group">
+                            {% csrf_token %}
+                            <button class="btn btn-default pull-right" type="submit"
+                              style="background-color: lightgrey; max-width: max-content;">Send</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </section>
+
+
+
+              <!-- Footer -->
+              <footer class="text-center">
+                <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                </a><br><br>
+                <nav class="secondary-menu">
+                  <div class="container">
+                    <!-- secondary menu left link area -->
+                    <div class="sm-left">
+                      <strong style="font-size: 28px;">Phone</strong>:&nbsp; <i href="#"
+                        style="font-size: 15px;">+91-8509076598</i>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <strong style="font-size: 28px;">E-mail</strong>:&nbsp; <i href="#"
+                        style="font-size: 15px;">goldendays@gmail.com</i>
+                    </div>
+                    <!-- secondary menu right link area -->
+                    <div class="sm-right">
+                      <!-- social link -->
+                      <div class="sm-social-link">
+                        <a class="h-facebook" href="https://www.facebook.com/goldendays21" target="_blank"><i
+                            class="fa fa-facebook fa-2x"></i></a>
+                        <a class="h-twitter" href="https://twitter.com/GoldenD58545783?s=08" target="_blank"><i
+                            class="fa fa-twitter fa-2x"></i></a>
+                        <a class="h-instagram" href="https://www.instagram.com/goldendays61/" target="_blank"><i
+                            class="fa fa-instagram fa-2x"></i></a>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </nav>
+                <b>@GOLDEN_DAYS www.GoldenDays.com</b>
+                <!-- secondary menu -->
+              </footer>
+
+
+
+              <script>
+                $(document).ready(function () {
+                  // Add smooth scrolling to all links in navbar + footer link
+                  $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
+                    // Make sure this.hash has a value before overriding default behavior
+                    if (this.hash !== "") {
+                      // Prevent default anchor click behavior
+                      event.preventDefault();
+
+                      // Store hash
+                      var hash = this.hash;
+
+                      // Using jQuery's animate() method to add smooth page scroll
+                      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                      $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                      }, 900, function () {
+
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                      });
+                    } // End if
+                  });
+
+                  $(window).scroll(function () {
+                    $(".slideanim").each(function () {
+                      var pos = $(this).offset().top;
+
+                      var winTop = $(window).scrollTop();
+                      if (pos < winTop + 600) {
+                        $(this).addClass("slide");
+                      }
+                    });
+                  });
+                  // Get the modal
+                  var modal = document.getElementById('id01');
+
+                  // When the user clicks anywhere outside of the modal, close it
+                  window.onclick = function (event) {
+                    if (event.target == modal) {
+                      modal.style.display = "none";
+                    }
+                  }
+
+                  // Get the modal
+                  var modal = document.getElementById('id02');
+
+                  // When the user clicks anywhere outside of the modal, close it
+                  window.onclick = function (event) {
+                    if (event.target == modal) {
+                      modal.style.display = "none";
+                    }
+                  }
+
+                })
+                function Contact() {
+                  alert("Thank You for your Feedback");
+
+                }
+                // function contact() {
+                //   alert("Thanks For Contacting Us.", "success");
+                // }
+              </script>
+
+</body>
+
+</html>

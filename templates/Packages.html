@@ -1,0 +1,645 @@
+<html lang="en">
+{%load static%}
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packages
+  </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!---Css Department-->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100%;
+      width: 100vw;
+      font: 380 15px/1.8 Montserrat, sans-serif;
+      font-family: Montserrat, sans-serif;
+      color: rgb(194, 189, 189) !important;
+      overflow-x: hidden;
+      background: #2d2d30;
+    }
+
+    .navbar {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+      background-color: #2d2d30;
+      border: 0;
+      font-size: 13px !important;
+      letter-spacing: 3px;
+    }
+
+    .navbar li a,
+    .navbar .navbar-brand {
+      color: #d5d5d5 !important;
+    }
+
+    .navbar-nav li a:hover {
+      color: #fff !important;
+    }
+
+    .navbar-nav li.active a {
+      color: #fff !important;
+      background-color: #2d2d30 !important;
+      opacity: 0.9;
+    }
+
+    .navbar-default .navbar-toggle {
+      border-color: transparent;
+    }
+
+    .open .dropdown-toggle {
+      color: #fff;
+      background-color: #555 !important;
+    }
+
+    .dropdown-menu li a {
+      background-color: #000000;
+      background-image: linear-gradient(315deg, #b82e1f 0%, #000000 74%);
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: red !important;
+    }
+
+    .jumbotron {
+      color: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 75vh;
+      background-image: url({%static 'nathan-dumlao-w5hhoYM_JsU-unsplash.jpg'%});
+      background-size: cover;
+      background-position: relative;
+      /* padding-top: 10%;
+    padding-bottom: 10%; */
+      font-family: Montserrat, sans-serif;
+      box-shadow: 0px 3px 20px #0f0f0f;
+    }
+
+    .jumbotron h1 {
+      text-shadow: 2px 2px 4px #2d2d30;
+    }
+
+    .head {
+      size: 20rem;
+    }
+
+    .container {
+      padding: 80px 120px;
+    }
+
+    .person {
+      border: 10px solid transparent;
+      margin-bottom: 25px;
+      width: 80%;
+      height: 80%;
+      opacity: 0.7;
+    }
+
+    .person:hover {
+      border-color: #f1f1f1;
+    }
+
+    .carousel-inner img {
+      -webkit-filter: grayscale(90%);
+      filter: grayscale(20%);
+      /* make all photos black and white */
+      width: 60%;
+      /* Set width to 60% */
+      margin: auto;
+    }
+
+    .carousel-caption h3 {
+      color: #fff !important;
+    }
+
+    @media (max-width: 600px) {
+      .carousel-caption {
+        display: none;
+        /* Hide the carousel text when the screen is less than 600 pixels wide */
+      }
+    }
+
+    .bg-1 {
+      background: #2d2d30;
+      color: #bdbdbd;
+      border-radius: 10px;
+    }
+
+    .bg-1 h3 {
+      color: #fff;
+      padding-bottom: 10rem;
+      letter-spacing: 4px;
+    }
+
+    .bg-1 p {
+      font-style: italic;
+    }
+
+    .list-group-item:first-child {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+    }
+
+    .list-group-item:last-child {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .thumbnail {
+      padding: 15px;
+      border: none;
+      border-radius: 3px;
+      box-shadow: 10px 10px 5px #19191b;
+      max-height: fit-content; 
+    }
+
+    .thumbnail p {
+      margin-top: 15px;
+      color: #555;
+    }
+
+    .thumbnail img {
+      box-shadow: 5px 5px 2px grey;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #2d2d30;
+      color: #f1f1f1;
+      border-radius: 3px;
+      box-shadow: 5px 5px 3px grey;
+      transition: transform .5s;
+    }
+
+    .btn:hover,
+    .btn:focus {
+      border: 1px solid #2d2d30;
+      background-color: #fff;
+      color: #000;
+      transform: scale(1.1);
+    }
+
+    .modal-header,
+    h4,
+    .close {
+      background-color: #2d2d30;
+      color: lightgray !important;
+      text-align: center;
+      font-size: 30px;
+      box-sizing: initial;
+    }
+
+    .modal-header {
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+    }
+
+    .modal-body {
+      color: #ffffff;
+      padding: 17px 15px;
+
+    }
+
+    .modal-content {
+      border-radius: 15px;
+    }
+
+    footer {
+      background-color: #2d2d30;
+      color: #f5f5f5;
+      padding: 32px;
+    }
+
+    footer a {
+      color: #f5f5f5;
+    }
+
+    footer a:hover {
+      color: #777;
+      text-decoration: none;
+      display: hidden;
+    }
+  </style>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+  <!--Navbar-->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#myPage">PACKAGES</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="../../">Home</a></li>
+          <li><a href="#forwedding">For Wedding</a></li>
+          <li><a href="#forbirthday">For Birthday</a></li>
+          <li><a href="#foranniversary">For Anniversary</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="jumbotron text-center">
+    <p class="head">
+    <h1>Here's Our Most Special Offers for You</h1>
+    </p>
+  </div>
+
+  <!--Package for Wedding-->
+  <div class="bg-1">
+
+    <div id="forwedding" class="container">
+      <h3 id="title2" class="text-center">Wedding Packages</h3>
+      {% if Pack_w %}
+      <div class="row text-center">
+        {% for pkgs in Pack_w %}
+        <div class="col-sm-4">
+          <div class="thumbnail" style="background-color: #f2ece1">
+            {% if pkgs.event_thumbnail %}
+            <img src="{{pkgs.event_thumbnail.url}}" style="width:300px; height:160px;">
+            {% else %}
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="280"
+              height="345" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+              preserveAspectRatio="xMidYMid slice" focusable="false">
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#eee" /><text x="30%" y="50%" fill="#aaa" dy=".3em">No
+                Image
+                Available</text>
+            </svg>
+
+            {% endif %}
+            <p>Venue - {{pkgs.event_venue}}</p>
+            <p>catering service - {{pkgs.event_caterer}}</p>
+            <p>Decorators - {{pkgs.event_decor}}</p>
+            <p><strong>Price - {{pkgs.event_rate}}</strong></p>
+            <button class="btn" data-toggle="modal" data-target="#myModal{{pkgs.id}}">Book Now</button>
+
+            <!-- Modal -->
+
+            <div class="modal fade" id="myModal{{pkgs.id}}" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                    <h4><img src="{{pkgs.event_thumbnail.url}}" style="width: 150px; height:111px;">
+                      {{pkgs.event_decor}} </h4>
+                  </div>
+                  <div class="modal-body">
+                    <form role="form" method="POST" onsubmit="popUp()">
+                      {% csrf_token %}
+                      <div class="form-group">
+
+                        <div class="row">
+                          <div class="col-5 float-left">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> {{pkgs.event_rate}}
+
+                          </div>
+                          <hr class="featurette-divider">
+                          <div class="col-5 float-left">
+                            <span style="color:black"> <strong>Enter Your Details</strong></span><br>
+                            <p>Your Name : <input type="text" name="requestor_name"
+                                value="{{user.first_name}} {{user.last_name}}" required></p>
+                            <P>Contact No.: <input type="tel" name="request_user_phone" pattern="[0-9]{10}" placeholder="Enter Your Number" required></p>
+                            <p> Booking For :<input type="date" name="bookingdate" onfocus="this.min=new Date().toISOString().split('T')[0]"  required> </p>
+                            <hr class="featurette-divider">
+
+
+                          </div>
+                        </div>
+
+                      </div>
+                      <input type="text" hidden name="package_id" value="{{pkgs.id}}">
+
+                      {% if user.is_authenticated %}
+                      <!-- <button type="submit" class="btn btn-success" style="font-size:16px"><i class="fa fa-heart-o"></i>
+                                  Wishlist</button> -->
+                      <input type="submit" class="btn btn-success" value="Request for Booking">
+                      {% else %}
+                      <a href="{% url 'login' %}" class="btn btn-block" disabled>Need to login for Booking</a>
+                      {% endif %}
+
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                      <span class="glyphicon glyphicon"></span> Cancel
+                    </button>
+                    <p>Need <a href="#">help?</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        {%endfor %}
+      </div>
+
+
+      {% else %}
+      <h3 class="text-center"></h3>
+      {% endif %}
+      <hr class="featurette-divider">
+    </div>
+
+    <!--Package for Birthday-->
+    <div class="bg-1">
+
+      <div id="forbirthday" class="container">
+      <h3 id="title2" class="text-center">Birthday Packages</h3>
+      {% if Pack_b %}
+      <div class="row text-center">
+        {% for pkgs in Pack_b %}
+        <div class="col-sm-4">
+          <div class="thumbnail" style="background-color: #f2ece1">
+            {% if pkgs.event_thumbnail %}
+            <img src="{{pkgs.event_thumbnail.url}}" style="width:300px; height:160px;">
+            {% else %}
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="280"
+              height="345" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+              preserveAspectRatio="xMidYMid slice" focusable="false">
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#eee" /><text x="30%" y="50%" fill="#aaa" dy=".3em">No
+                Image
+                Available</text>
+            </svg>
+
+            {% endif %}
+            <p>Venue - {{pkgs.event_venue}}</p>
+            <p>catering service - {{pkgs.event_caterer}}</p>
+            <p>Decorators - {{pkgs.event_decor}}</p>
+            <p><strong>Price - {{pkgs.event_rate}}</strong></p>
+            <button class="btn" data-toggle="modal" data-target="#myModal{{pkgs.id}}">Book Now</button>
+
+            <!-- Modal -->
+
+            <div class="modal fade" id="myModal{{pkgs.id}}" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                    <h4><img src="{{pkgs.event_thumbnail.url}}" style="width: 150px; height:111px;">
+                      {{pkgs.event_decor}} </h4>
+                  </div>
+                  <div class="modal-body">
+                    <form role="form" method="POST" onsubmit="popUp()">
+                      {% csrf_token %}
+                      <div class="form-group">
+
+                        <div class="row">
+                          <div class="col-5 float-left">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> {{pkgs.event_rate}}
+
+                          </div>
+                          <hr class="featurette-divider">
+                          <div class="col-5 float-left">
+                            <span style="color:black"> <strong>Enter Your Details</strong></span><br>
+                            <p>Your Name : <input type="text" name="requestor_name"
+                                value="{{user.first_name}} {{user.last_name}}" required></p>
+                            <P>Contact No.: <input type="tel" name="request_user_phone" pattern="[0-9]{10}" placeholder="Enter Your Number" required></p>
+                            <p> Booking For :<input type="date" name="bookingdate" onfocus="this.min=new Date().toISOString().split('T')[0]"  required> </p>
+                            <hr class="featurette-divider">
+
+
+                          </div>
+                        </div>
+
+                      </div>
+                      <input type="text" hidden name="package_id" value="{{pkgs.id}}">
+
+                      {% if user.is_authenticated %}
+                      <!-- <button type="submit" class="btn btn-success" style="font-size:16px"><i class="fa fa-heart-o"></i>
+                                  Wishlist</button> -->
+                      <input type="submit" class="btn btn-success" value="Request for Booking">
+                      {% else %}
+                      <a href="{% url 'login' %}" class="btn btn-block" disabled>Need to login for Booking</a>
+                      {% endif %}
+
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                      <span class="glyphicon glyphicon"></span> Cancel
+                    </button>
+                    <p>Need <a href="#">help?</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        {%endfor %}
+      </div>
+
+
+      {% else %}
+      <h3 class="text-center"></h3>
+      {% endif %}
+      <hr class="featurette-divider">
+    </div>
+     
+    <!-- Package for Anniversary -->
+    <div class="bg-1">
+
+      <div id="foranniversary" class="container">
+        <h3 id="tile3" class="text-center">Anniversary Packages</h3>
+        {% if Pack_a %}
+        <!-- <p class="text-center"><strong>The party doesn't start until the bride walks in 👰🏻</strong></p> -->
+
+        <div class="row text-center">
+          {% for pkgs in Pack_a %}
+          <div class="col-sm-4">
+            <div class="thumbnail" style="background-color: #f2ece1">
+              {% if pkgs.event_thumbnail %}
+              <img src="{{pkgs.event_thumbnail.url}}" style="width:300px; height:160px;">
+              {% else %}
+              <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="280"
+                height="345" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#eee" /><text x="30%" y="50%" fill="#aaa" dy=".3em">No Image
+                  Available</text>
+              </svg>
+
+              {% endif %}
+              <p>Venue - {{pkgs.event_venue}}</p>
+              <p>catering service - {{pkgs.event_caterer}}</p>
+              <p>Decorators - {{pkgs.event_decor}}</p>
+              <p><strong>Price - {{pkgs.event_rate}}</strong></p>
+              <button class="btn" data-toggle="modal" data-target="#myModal{{pkgs.id}}">Book Now</button>
+              <!-- Modal -->
+
+              <div class="modal fade" id="myModal{{pkgs.id}}" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                      <h4><img src="{{pkgs.event_thumbnail.url}}" style="width: 150px; height:111px;">
+                        {{pkgs.event_decor}} </h4>
+                    </div>
+                    <div class="modal-body">
+                      <form role="form" method="POST" onsubmit="popUp()">
+                        {% csrf_token %}
+                        <div class="form-group">
+
+                          <div class="row">
+                            <div class="col-5 float-left">
+                              <span class="glyphicon glyphicon-shopping-cart"></span> {{pkgs.event_rate}}
+
+                            </div>
+                            <hr class="featurette-divider">
+                            <div class="col-5 float-left">
+                              <span style="color:black"> <strong>Enter Your Details</strong></span><br>
+                              <p>Your Name : <input type="text" name="requestor_name"
+                                  value="{{user.first_name}} {{user.last_name}}" required></p>
+                              <P>Contact No.: <input type="tel" name="request_user_phone" pattern="[0-9]{10}" placeholder="Enter Your Number" required></p>
+                              <p> Booking For :<input type="date" name="bookingdate" onfocus="this.min=new Date().toISOString().split('T')[0]"  required> </p>
+                              <hr class="featurette-divider">
+
+
+                            </div>
+                          </div>
+
+                        </div>
+                        <input type="text" hidden name="package_id" value="{{pkgs.id}}">
+
+                        {% if user.is_authenticated %}
+                        <!-- <button type="submit" class="btn btn-success" style="font-size:16px"><i class="fa fa-heart-o"></i>
+                        Wishlist</button> -->
+                        <input  type="submit" class="btn btn-success" value="Request for Booking">
+                        {% else %}
+                        <a href="{% url 'login' %}" class="btn btn-block" disabled>Need to login for Booking</a>
+                        {% endif %}
+
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                        <span class="glyphicon glyphicon"></span> Cancel
+                      </button>
+                      <p>Need <a href="#">help?</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {%endfor %}
+        </div>
+
+
+        {% else %}
+        <h3 class="text-center"></h3>
+        {% endif %}
+        <hr class="featurette-divider">
+      </div>
+
+     
+
+      <!-- Footer -->
+      <footer class="text-center">
+        <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+
+
+          <!-- Container (site info) -->
+          <div id="siteinfo" class="bg-1">
+            <div class="container">
+              <h3 class="text-center">Golden Days, 200 - 1110 7 Street SW</h3><br>
+              <h7 class="text-center"> Hooghly, West Bengal, T2R 1A2, India</h7>
+              <br><span>info@eventsbygoldendays.com</span>
+            </div>
+          </div>
+      </footer>
+      <script>
+        function popUp() {
+          alert("Request have been submitted Successfully!", "success");
+        }
+        $(document).ready(function () {
+          // Initialize Tooltip
+          $('[data-toggle="tooltip"]').tooltip();
+
+          // Add smooth scrolling to all links in navbar + footer link
+          $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
+
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+
+              // Prevent default anchor click behavior
+              event.preventDefault();
+
+              // Store hash
+              var hash = this.hash;
+
+              // Using jQuery's animate() method to add smooth page scroll
+              // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+              $('html, body').animate({
+                scrollTop: $(hash).offset().top
+              }, 900, function () {
+
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+              });
+            } // End if
+          });
+        })
+        function popUp() {
+          alert("Request have been submitted Successfully!", "success");
+
+          $("html, body").delay(2000).animate({ scrollTop: $('#title1').offset().top }, 2000);
+          $("html, body").animate({ scrollTop: $('#title2').height() }, 1000);
+          $("html, body").delay(2000).animate({ scrollTop: $('#title3').offset().top }, 2000);
+
+          $('a.page-scroll').bind('click', function (event) {
+            var $anchor = $(this);
+            $('html, body').stop().animate({
+              scrollTop: ($($anchor.attr('href')).offset().top - 50)
+            }, 1250, 'easeInOutExpo');
+            event.preventDefault();
+          });
+          mybutton = document.getElementById("myBtn");
+
+          // When the user scrolls down 80px from the top of the document, show the button
+          window.onscroll = function () { scrollFunction() };
+
+          function scrollFunction() {
+            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+              mybutton.style.display = "block";
+            } else {
+              mybutton.style.display = "none";
+            }
+          }
+
+          // When the user clicks on the button, scroll to the top of the document
+          function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+          }
+        }
+      </script>
+</body>
+
+</html>

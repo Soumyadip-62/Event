@@ -1,0 +1,155 @@
+{% extends 'admin_base.html'%}
+{%load static%}
+{% load app_extras %}
+{% block bodyblock %}
+
+{% if pending_requests %}
+<div id="Bride" class="bg-1">
+  <div class="container">
+    <h3 class="alert alert-primary text-center" style="background-color:transparent;">ACTION NEEDED</h3>
+    <div class="row text-center">
+      <div class="col-sm-12">
+        <table class="table table-hove">
+          <thead>
+            <tr>
+              <th scope="col" style="text-align:center">Request#</th>
+              <th scope="col" style="text-align:center">Requested Service</th>
+              <th scope="col" style="text-align:center">Requested For</th>
+              <th scope="col" style="text-align:center">Request Submitted By</th>
+              <th scope="col" style="text-align:center">Requested On</th>
+              <th scope="col" style="text-align:center">Pending Request</th>
+              <th scope="col" style="text-align:center">Approvals</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for prequest in pending_requests %}
+            <tr>
+              <th scope="row text-center">{{prequest.request_id}}</th>
+              <th scope="row text-center">{{prequest.reguest_for}}</th>
+              <th scope="row text-center">{{prequest.booking_type}}</th>
+              <th scope="row text-center">{{prequest.requestor_name}}</th>
+              <th scope="row text-center">{{prequest.booking_request_log}}</th>
+              <th scope="row text-center">{{prequest.booking_status}}</th>
+              <th scope="row text-center">
+
+                <a data-toggle="modal" data-target="#myModal{{prequest.id}}" style="color: #a2e282;">Status Change</a>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal{{prequest.id}}" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                        <h4><span class="glyphicon glyphicon-list-alt"></span> {{prequest.request_id}} </h4>
+                      </div>
+                      <div class="modal-body">
+                        <form method="POST">
+                          {% csrf_token %}
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Status</label>
+                            <select class="form-control" name="status_change" onchange="myFunction() id=" mySelect">
+                              <option value={{prequest.booking_status}}>{{prequest.booking_status}}</option>
+                              {% for booking in bookings_status %}
+
+                              {% if prequest.booking_status in booking.status %}
+                              {% else %}
+                              <option value={{booking.id}}>{{booking.status}}</option>
+                              {% endif %}
+                              {% endfor %}
+                            </select>
+                            <p id="demo"></p>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Remarks</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="remarks"
+                              rows="3"></textarea>
+                          </div>
+                          <input type="text" hidden name="bookid" value="{{prequest.id}}">
+                          <input type="submit" class="btn btn-block" value="Update Status">
+                        </form>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="submit" class="btn  btn-default pull-left" data-dismiss="modal">
+                          <span class="glyphicon glyphicon-remove"></span> Cancel
+                        </button>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </th>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+{% else %}
+<div id="Bride" class="bg-1">
+  <div class="container">
+    <h3 class="alert alert-primary text-center">NO PENDING REQUEST</h3>
+    <hr class="featurette-divider">
+
+  </div>
+</div>
+{% endif %}
+
+<!-- Request Histor -->
+{% if request_histories %}
+<div id="Bride" class="bg-1">
+  <div class="container">
+    <h3 class="alert alert-primary text-center" style="background-color: #13052e;">REQUEST HISTORY</h3>
+    <div class="row text-center">
+      <div class="col-sm-12">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Request#</th>
+              <th scope="col">Requested For</th>
+              <th scope="col">Request Submitted By</th>
+              <th scope="col">Requested On</th>
+              <th scope="col">Request Status</th>
+              <th scope="col">Remarks</th>
+              <th scope="col">Action Taken On</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for history in request_histories %}
+            <tr>
+              <th style="color: #0e0c0c;" scope="row text-center">{{history.request_id}}</th>
+              <th style="color: #0e0c0c;" scope="row text-center">{{history.booking_type}}</th>
+              <th style="color: #0e0c0c;" scope="row text-center">{{history.requestor_name}}</th>
+              <th style="color: #0e0c0c;" scope="row text-center">{{history.booking_request_log}}</th>
+              <th style="color: #0e0c0c;" scope="row text-center">{{history.booking_status}}</th>
+              <th style="color: #0e0c0c;" scope="row text-center"> {{history.status_change_message}} </th>
+              <th style="color: #0e0c0c;" scope="row text-center"> {{history.last_chage_history}} </th>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+{% else %}
+<div id="Bride" class="bg-1">
+  <div class="container">
+    <h3 class="alert alert-primary text-center">NO PENDING REQUEST</h3>
+    <hr class="featurette-divider">
+
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+{%load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Fonts Form Google Font ::- https://fonts.google.com/  -:: */
+    @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
+
+    /* End Fonts */
+    /* Start Global rules */
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    /* End Global rules */
+
+    /* Start body rules */
+    body {
+      background: url({%static 'frontpage1.jpg'%}) no-repeat fixed center center;
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+
+      font-family: 'Vibur', cursive;
+      /*   the main font */
+      font-family: 'Abel', sans-serif;
+      opacity: .95;
+      /* background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%); */
+    }
+
+
+
+    /* |||||||||||||||||||||||||||||||||||||||||||||*/
+    /* //////////////////////////////////////////// */
+
+
+
+
+    /* End body rules */
+
+    /* Start form  attributes */
+    form {
+      min-width: 620px;
+      width: 700px;
+      min-height: 450px;
+      height: 900px;
+      border-radius: 40px;
+      margin: 9% auto;
+      padding: 3%;
+      opacity: 0.8;
+      background-color: #272626;
+      opacity: 0.9;
+      box-shadow: 5px 5px 3px rgb(0, 0, 0);
+    }
+
+    /* form Container */
+    form .con {
+      align-content: center;
+      -webkit-justify-content: space-around;
+      justify-content: space-around;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      margin: 13%;
+      vertical-align: right;
+    }
+
+    /* the header form form */
+    header {
+      margin: 2% auto 10% auto;
+      text-align: center;
+    }
+
+    /* Login title form form */
+    header h2 {
+      font-size: 250%;
+      font-family: 'Playfair Display', serif;
+      color: #3e403f;
+    }
+
+    /*  A welcome message or an explanation of the login form */
+    header p {
+      letter-spacing: 0.05em;
+    }
+
+
+
+    /* //////////////////////////////////////////// */
+    /* //////////////////////////////////////////// */
+
+
+    .input-item {
+
+      background: #fff;
+      color: #333;
+      padding: 14.5px 0px 15px 9px;
+      border-radius: 5px 0px 0px 5px;
+    }
+
+
+
+    /* Show/hide password Font Icon */
+    #eye {
+      background: #fff;
+      color: #333;
+
+      margin: 5.9px 0 0 0;
+      margin-left: -20px;
+      padding: 15px 9px 19px 0px;
+      border-radius: 0px 5px 5px 0px;
+
+      float: right;
+      position: relative;
+      right: 1%;
+      top: -.2%;
+      z-index: 5;
+
+      cursor: pointer;
+    }
+
+    /* inputs form  */
+    input[class="form-input"] {
+      width: 400px;
+      height: 50px;
+
+      margin-top: 2%;
+      padding: 15px;
+
+      font-size: 25px;
+      font-family: 'Abel', sans-serif;
+      color: #0e0b0b;
+
+      outline: none;
+      border: none;
+
+      border-radius: 50px;
+      transition: 0.2s linear;
+    }
+
+    input[id="txt-input"] {
+      width: 250px;
+    }
+
+    /* focus  */
+    input:focus {
+      transform: translateX(-2px);
+      border-radius: 5px;
+    }
+
+    /* //////////////////////////////////////////// */
+    /* //////////////////////////////////////////// */
+
+    /* input[type="text"] {min-width: 250px;} */
+    /* buttons  */
+    button {
+      display: inline-block;
+      color: #252537;
+
+      width: 280px;
+      height: 50px;
+
+      padding: 0 20px;
+      background: #fff;
+      border-radius: 5px;
+
+      outline: none;
+      border: none;
+
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s linear;
+
+      margin: 7% auto;
+      letter-spacing: 0.05em;
+    }
+
+    /* Submits */
+    .submits {
+      width: 48%;
+      display: inline-block;
+      float: left;
+      margin-left: 2%;
+    }
+
+    /*       Forgot Password button FAF3DD  */
+    .frgt-pass {
+      background: transparent;
+    }
+
+    /*     Sign Up button  */
+    .sign-up {
+      background: #B8F2E6;
+    }
+
+
+    /* buttons hover */
+    button:hover {
+      transform: translatey(3px);
+      box-shadow: none;
+    }
+
+    /* buttons hover Animation */
+    button:hover {
+      animation: ani9 0.4s ease-in-out infinite alternate;
+    }
+
+    @keyframes ani9 {
+      0% {
+        transform: translateY(3px);
+      }
+
+      100% {
+        transform: translateY(5px);
+      }
+    }
+
+    .field-set {
+      position: right;
+    }
+
+
+    .signupbtn {
+      padding: 10px 20px;
+      background-color: #3967e7;
+      color: #f1f1f1;
+      border-radius: 22px;
+      align-items: center;
+      transition: transform .5s;
+       margin-left: 25%;
+      margin-top: 2%;
+    }
+
+
+    /* Float cancel and signup buttons and add an equal width */
+    .cancelbtn,
+    .signupbtn {
+      float: left;
+      width: 50%;
+    }
+
+    .navbar {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+      background-color: #000;
+      border: 0;
+      font-size: 13px !important;
+      letter-spacing: 3px;
+      opacity: 0.9;
+    }
+
+    .navbar.light .navbar.brand {
+      color: #fff;
+      font-size: 25px;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <!---Alertsection-->
+    {% for message in messages %}
+      <div class="alert alert-warning alert-dismissable"  role="alert">
+                  <button class="close" data-dismiss="alert">
+                      <large><sup><h2>x</h2><sup></large>
+                  </button>
+                   <strong>Message:  {{ message }} </strong>
+      </div>
+    {% endfor %}
+
+    <h4 style="margin-top:9px; font-family:verdana;letter-spacing: 3px;">
+       <a  href="../../" style="color:white; text-decoration:none">&nbsp; <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+        fill="currentColor" class="bi bi-slack" viewBox="0 0 16 16">
+        <path
+          d="M3.362 10.11c0 .926-.756 1.681-1.681 1.681S0 11.036 0 10.111C0 9.186.756 8.43 1.68 8.43h1.682v1.68zm.846 0c0-.924.756-1.68 1.681-1.68s1.681.756 1.681 1.68v4.21c0 .924-.756 1.68-1.68 1.68a1.685 1.685 0 0 1-1.682-1.68v-4.21zM5.89 3.362c-.926 0-1.682-.756-1.682-1.681S4.964 0 5.89 0s1.68.756 1.68 1.68v1.682H5.89zm0 .846c.924 0 1.68.756 1.68 1.681S6.814 7.57 5.89 7.57H1.68C.757 7.57 0 6.814 0 5.89c0-.926.756-1.682 1.68-1.682h4.21zm6.749 1.682c0-.926.755-1.682 1.68-1.682.925 0 1.681.756 1.681 1.681s-.756 1.681-1.68 1.681h-1.681V5.89zm-.848 0c0 .924-.755 1.68-1.68 1.68A1.685 1.685 0 0 1 8.43 5.89V1.68C8.43.757 9.186 0 10.11 0c.926 0 1.681.756 1.681 1.68v4.21zm-1.681 6.748c.926 0 1.682.756 1.682 1.681S11.036 16 10.11 16s-1.681-.756-1.681-1.68v-1.682h1.68zm0-.847c-.924 0-1.68-.755-1.68-1.68 0-.925.756-1.681 1.68-1.681h4.21c.924 0 1.68.756 1.68 1.68 0 .926-.756 1.681-1.68 1.681h-4.21z" />
+      </svg> GOLDEN DAYS</a>
+   </h4>
+
+  <div class="overlay" style="margin-top:100px">
+
+    <form class="circle" style="max-width:550px; min-width:30px;" action="register" method="POST">
+      {% csrf_token %}
+      <div class="overlay">
+        <!-- LOGN IN FORM by Omar Dsoky -->
+
+        <!--   con = Container  for items in the form-->
+        <div class="con">
+          <!--     Start  header Content  -->
+          <header class="head-form">
+
+            <h2 style="color:white"><img
+                src="https://see.fontimg.com/api/renderfont4/x3GWq/eyJyIjoiZnMiLCJoIjo5MSwidyI6MTAwMCwiZnMiOjkxLCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiIzM1M0Q0QiIsInQiOjF9/U2lnblVw/bright-nature.png"
+                style="margin-top:-15%;"></h2>
+            <!--     A welcome message or an explanation of the login form -->
+            <p style="color:white"><img
+                src="https://see.fontimg.com/api/renderfont4/K73DZ/eyJyIjoiZnMiLCJoIjoyNywidyI6MTAwMCwiZnMiOjI3LCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiIzM1M0Q0QiIsInQiOjF9/Q3JlYXRlIHlvdXIgYWNjb3VudCBoZXJlOg/abhayas-light.png">
+            </p>
+          </header>
+          <!--     End  header Content  -->
+          <br>
+          <div class="field-set row text-center">
+
+            <!--   user name -->
+
+
+            <!--   user name Input-->
+            <input class="form-input"  type="text" placeholder="First Name" name="first_name" id="first_name" required
+              align="center">
+            <input class="form-input" type="text" placeholder="Last Name" name="last_name" id="last_name" required
+              align="center">
+            <input class="form-input" type="text" placeholder="@Username" name="username" id="username" required
+              align="center">
+            <input class="form-input" type="text" placeholder="Email" name="email" id="email" required align="center">
+            <input class="form-input" type="password" placeholder="Password" name="password1" id="password1" required
+              align="center">
+            <input class="form-input" type="password" align="center" placeholder="Confirm Password" name="password2"
+              id="password2" required>
+            <br><br>
+            <input type="checkbox" onclick="myFunction()"><b style="color: #e7dfb4;">&nbspShow Password</b>
+            <br>
+
+
+            <!--        buttons -->
+            <!--      button signup -->
+            <div class="other">
+              <br>
+              <h2 style="color:white">Already have an account?</h2><a style="font-size: 20px;" href="{% url 'login' %}">
+                Log In</a>&nbsp&nbsp&nbsp&nbsp <a style="font-size: 20px;" href="{% url 'base' %}">Home </a>
+
+              <div class="clearfix">
+                <br>
+
+                <a href="#"><button onclick="register()" type="signup" class="signupbtn">
+                    <h4><b>Sign Up</b></h4>
+                  </button></a>
+              </div>
+              <i class="fa fa-user-plus" aria-hidden="true"></i>
+              </button>
+            </div>
+            <!--   other buttons -->
+            <!-- <div class="other">
+
+     <div class="clearfix">
+
+        <a href="#"><button type="signup" class="signupbtn"><h4>Sign Up</h4></button></a>
+
+        <h3 style="color:white">Already have an account?</h3><a href="{% url 'login' %}">&nbsp&nbsp Log In</a>
+      </div>
+
+      <i class="fa fa-user-plus" aria-hidden="true"></i>
+      </button>
+
+   </div> -->
+            <!--   End Container  -->
+          </div>
+
+          <!-- End Form -->
+    </form>
+  </div>
+  </form>
+
+
+  <script>
+    // Show/hide password onClick of button using Javascript only
+
+    // https://stackoverflow.com/questions/31224651/show-hide-password-onclick-of-button-using-javascript-only
+
+    function myFunction() {
+      var x = document.getElementById("password2");
+      if (x.type === "password2") {
+        x.type = "text";
+      } else {
+        x.type = "password2";
+      }
+    }
+  </script>
+</body>
+
+</html>

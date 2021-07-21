@@ -1,0 +1,7 @@
+{
+    "editor.wordWrap": "on",
+    "css.styleSheets": [
+    
+    ],
+    "python.formatting.provider": "black"
+}

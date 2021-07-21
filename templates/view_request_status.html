@@ -1,0 +1,89 @@
+{% extends 'user_base.html'%}
+{%load static%}
+{% load app_extras %}
+{% block bodyblock %}
+
+{% if bookings %}
+<div id="Bride" class="bg-1">
+  <div class="container">
+    <h3 class="alert alert-primary text-center" style="background-color: #a8a4a3;">REQUEST STATUS</h3>
+    <div class="row text-center">
+      <div class="col-sm-12">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Request#</th>
+              <th scope="col">Requested For</th>
+              <th scope="col">Requested On</th>
+              <th scope="col">Request Status</th>
+              <th scope="col" span=2>Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for booking in bookings %}
+            <tr>
+              <th scope="row text-center">{{booking.request_id}}</th>
+              <th scope="row text-center">{{booking.booking_type}}</th>
+              <th scope="row text-center">{{booking.booking_request_log}}</th>
+              <th scope="row text-center">{{booking.booking_status}}</th>
+              <th scope="row text-center" span=2>{{booking.status_change_message}}</th>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+{% else %}
+<div id="Bride" class="bg-1">
+  <div class="container">
+    <h3 class="alert alert-primary text-center" style="background-color: #a8a4a3;">NO PENDING REQUEST</h3>
+  </div>
+</div>
+{% endif %}
+
+{% if approved_bookings %}
+<div id="Bride" class="bg-1">
+  <div class="container">
+    <h3 class="alert alert-primary text-center" style="background-color: #284f15;">APPRVED REQUEST</h3>
+    <div class="row text-center">
+      <div class="col-sm-12">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Request#</th>
+              <th scope="col">Requested For</th>
+              <th scope="col">Requested On</th>
+              <th scope="col">Request Status</th>
+              <th scope="col">Approved On</th>
+              <th scope="col" span=2>Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for booking in approved_bookings %}
+            <tr>
+              <th scope="row text-center">{{booking.request_id}}</th>
+              <th scope="row text-center">{{booking.booking_type}}</th>
+              <th scope="row text-center">{{booking.booking_request_log}}</th>
+              <th scope="row text-center">{{booking.booking_status}}</th>
+              <th scope="row text-center">{{booking.last_chage_history}}</th>
+              <th scope="row text-center" span=2>{{booking.status_change_message}}</th>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+{% endblock %}

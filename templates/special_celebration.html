@@ -1,0 +1,125 @@
+{% extends 'anniversary_base.html'%}
+{%load static%}
+{% load app_extras %}
+{% block bodyblock %}
+<div class="container">
+  <h3 class="text-center">ANNIVERSARY SPECIAL CELEBRATION</h3>
+  <hr class="featurette-divider">
+  {% if an %}
+  <div class="row text-center">
+    {% for item in an %}
+
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        {% if item.picture %}
+        <img src="{{item.picture.url}}" style="width:300px; height:160px;">
+        {% else %}
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="280"
+          height="295" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+          preserveAspectRatio="xMidYMid slice" focusable="false">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#eee" /><text x="30%" y="50%" fill="#aaa" dy=".3em">No Image
+            Available</text>
+        </svg>
+
+        {% endif %}
+        <p class="text-center"><strong>{{item.arrengement_name}}</strong></p>
+        <p class="text-center"><strong>{{item.location}}</strong></p>
+        <p>
+        <div class="row text-center">
+          <div class="col-sm-5 text-center">
+
+            {{item.organizer}}
+          </div>
+          <div class="col-sm-4">
+
+            ₹{{item.package}}/couple
+          </div>
+
+        </div>
+        </p>
+
+
+
+        <button class="btn" data-toggle="modal" data-target="#myModal{{item.id}}">Book Now</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal{{item.id}}" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content custom">
+              <div class="modal-header">
+                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                <h4><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                    class="bi bi-stars" viewBox="0 0 16 16">
+                    <path
+                      d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z" />
+                  </svg> {{item.arrengement_name}} </h4>
+              </div>
+              <div class="modal-body">
+                <form role="form" method="POST" onsubmit="popUp()">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <span class=""></span>By {{item.organizer}}
+                    <div class="form-group">
+                      <span class="glyphicon glyphicon-globe"></span> {{item.location}}
+                      <div class="row">
+                        <div class="col-5 float-left">
+                          <span class="glyphicon glyphicon-earphone"></span> {{item.phone}}
+                          <div class="row">
+                            <span class=""></span> {{item.desc}}
+
+                            <hr class="featurette-divider">
+                            <div class="col-5 float-left">
+                              <span style="color:black"> <strong>Enter Your Details</strong></span><br>
+                              <p>Your Name : <input type="text" name="requestor_name"
+                                  value="{{user.first_name}} {{user.last_name}}" required></p>
+                              <P>Contact No.: <input type="tel" name="request_user_phone" pattern="[0-9]{10}" placeholder="Enter Your Number" required></p>
+                              <p> Booking For :<input type="date" name="bookingdate" onfocus="this.min=new Date().toISOString().split('T')[0]"  required> </p>
+                              <hr class="featurette-divider">
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <input type="text" hidden name="id" value="{{item.id}}">
+                    <!-- <input type="submit" class="btn btn-success" value="🤍 Wishlist">&nbsp;&nbsp;&nbsp;&nbsp; -->
+                    {% if user.is_authenticated %}
+                    <input type="submit" class="btn btn-success" value="Request for Booking">
+                    {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-success" disabled>Need to login for Booking</a>
+                    {% endif %}
+                  </div>
+                </form>
+
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                  <span class="glyphicon glyphicon-remove"></span> Cancel
+                </button>
+                <p>Need <a href="#">help?</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <hr class="featurette-divider">
+    </div>
+
+    {% endfor %}
+  </div>
+  <hr class="featurette-divider">
+
+  {% else %}
+  <h3 class="text-center">No Data Available now</h3>
+  {% endif %}
+  <script type="text/javascript">
+
+  </script>
+
+  {% endblock %}

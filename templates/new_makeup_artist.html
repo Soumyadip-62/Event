@@ -1,0 +1,44 @@
+{% extends 'wedding_base.html'%}
+{%load static%}
+{% load app_extras %}
+
+
+{% block bodyblock %}
+
+
+<div id="Bride" class="bg-1" novalidation enctype="multipart/form-data">
+  <div class="container">
+    <h3 class="alert alert-primary text-center" style="background-color: #284f15;">ADD NEW MAKEUP ARTIST</h3>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+          <div class="row text-center">
+
+            {% for mkf in makeup_form %}
+            <div class="col-sm-4">
+              <span style="background-color: #635858">{{mkf.label|striptags}}</span> <span>{{mkf}}</span> <span style='color:red'> {{mkf.errors|striptags}}</span>
+
+
+            </div>
+
+          {% endfor %}
+          </div>
+          <div class="row" style="margin-top:10px">
+            <div class="col-sm-4">
+              <a class="btn btn-info"> Cancel</a>
+              <input type="submit" name="" class="btn btn-success" value="Add New Makeup Artist">
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+      </form>
+    </div>
+
+
+
+
+{% endblock %}

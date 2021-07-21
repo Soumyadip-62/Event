@@ -1,0 +1,101 @@
+{% extends 'anniversary_base.html'%}
+{%load static%}
+{% load app_extras %}
+{% block bodyblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container">
+  <h3 class="text-center">ANNIVERSARY THEME</h3>
+  <hr class="featurette-divider">
+{% if thm %}
+  <div class="row text-center">
+    {% for item in thm %}
+
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        {% if item.picture %}
+        <img src="{{item.picture.url}}" style="width:300px; height:160px;">
+        {% else %}
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="280" height="295" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="30%" y="50%" fill="#aaa" dy=".3em">No Image Available</text></svg>
+
+        {% endif %}
+        <p class="text-center"><strong>{{item.theme_name}}</strong></p>
+        <p>
+          <div class="row text-center" style="color:#737373">
+            ₹{{item.package}}/day
+          </div>
+        </p>
+
+
+
+      <button class="btn" data-toggle="modal" data-target="#myModal{{item.id}}">Book Now</button>
+
+        <!-- Modal -->
+             <div class="modal fade" id="myModal{{item.id}}" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content custom">
+                  <div class="modal-header" style="background-image: url({{ item.back_pic.url }})">
+                  <!-- style="background: url({% static 'goldback.jpg' %})"> -->
+
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                    <h1 style="color:black"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-palette-fill" viewBox="0 0 16 16">
+  <path d="M12.433 10.07C14.133 10.585 16 11.15 16 8a8 8 0 1 0-8 8c1.996 0 1.826-1.504 1.649-3.08-.124-1.101-.252-2.237.351-2.92.465-.527 1.42-.237 2.433.07zM8 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm4.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+</svg> {{item.theme_name}} </h1>
+                  </div>
+                  <div class="modal-body">
+                    <form role="form" method="POST" onsubmit="popUp()">
+                      {% csrf_token %}
+                      <div class="row">
+                          <div class="row">
+                          <span class=""></span> {{item.desc}}
+
+                          <hr class="featurette-divider">
+                          <div class="col-5 float-left">
+                          <span style="color:black">   <strong>Enter Your Details</strong></span><br>
+                          <p>Your Name : <input type="text" name="requestor_name" value="{{user.first_name}} {{user.last_name}}" required></P>
+                          <P>Contact No.: <input type="tel" name="request_user_phone" pattern="[0-9]{10}" placeholder="Enter Your Number" required></p>
+                          <p> Booking For :<input type="date" name="bookingdate" onfocus="this.min=new Date().toISOString().split('T')[0]"  required> </p>
+                          <hr class="featurette-divider">
+
+
+                          </div>
+                          </div>
+                        </div>
+
+                        <input type="text" hidden name="id" value="{{item.id}}">
+                         {% if user.is_authenticated %}
+                        <input type="submit" class="btn btn-success" value="Request for Booking">
+                        {% else %}
+                        <a href="{% url 'login' %}" class="btn btn-success" disabled >Need to login for Booking</a>
+                        {% endif %}
+                   </form>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                      <span class="glyphicon glyphicon-remove"></span> Cancel
+                    </button>
+                    <p>Need <a href="#">help?</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+      </div>
+    </div>
+
+{% endfor %}
+  </div>
+  <hr class="featurette-divider">
+
+{% else %}
+  <h3 class="text-center">No Data Available now</h3>
+{% endif %}
+<script type="text/javascript">
+  function popUp(){
+    alert("Request have been submitted Successfully!");
+}
+</script>
+
+{% endblock %}
